@@ -1,10 +1,13 @@
 import "./App.css";
+import Juicy from "./Components/Juicy";
+import HeroSection from "./Components/JuicySection";
 
 function App() {
   return (
     <>
-      <div className=" ">
-        <p className="">Juciy</p>
+      <div className="">
+        {/* <Juicy /> */}
+        <HeroSection />
       </div>
     </>
   );
