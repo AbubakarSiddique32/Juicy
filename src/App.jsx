@@ -6,8 +6,8 @@ function App() {
   return (
     <>
       <div className="">
-        {/* <Juicy /> */}
-        <HeroSection />
+        <Juicy />
+        {/* <HeroSection /> */}
       </div>
     </>
   );

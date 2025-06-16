@@ -1,10 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
 
+const juiceData = [
+  {
+    name: "Orange Crush",
+    description:
+      "Discover a world of vibrant flavors with our premium juice selection. At Fresh & Juicy, we believe in the power of nature's finest ingredients to bring you delicious.",
+    image: "/can-orange.png", // Replace with the correct image path for the orange juice can
+    sizes: ["500 ML", "100 ML", "125 ML"],
+    bgColor: "bg-orange-500",
+    textColor: "text-orange-600",
+  },
+  {
+    name: "Cheeky Lime",
+    description:
+      "A tangy and refreshing blend of nature's finest ingredients, designed to invigorate your taste buds and brighten your day.",
+    image: "/can-lime.png", // Replace with the correct image path for the lime juice can
+    sizes: ["500 ML", "100 ML", "125 ML"],
+    bgColor: "bg-green-500",
+    textColor: "text-green-600",
+  },
+  {
+    name: "Red Berry",
+    description:
+      "Experience the bold and sweet flavor of red berries, carefully crafted with nature’s best to bring a rich, fruity experience.",
+    image: "/can-red.png", // Replace with the correct image path for the red berry juice can
+    sizes: ["500 ML", "100 ML", "125 ML"],
+    bgColor: "bg-red-500",
+    textColor: "text-red-600",
+  },
+  {
+    name: "Purple Grape",
+    description:
+      "A sweet and juicy blend of premium grapes, packed with antioxidants and flavor to refresh your senses.",
+    image: "/can-purple.png", // Replace with the correct image path for the purple grape juice can
+    sizes: ["500 ML", "100 ML", "125 ML"],
+    bgColor: "bg-purple-500",
+    textColor: "text-purple-600",
+  },
+];
+
 export default function Juicy() {
+  const [currentJuiceIndex, setCurrentJuiceIndex] = useState(0);
+
+  const handleNextJuice = () => {
+    setCurrentJuiceIndex((prevIndex) => (prevIndex + 1) % juiceData.length);
+  };
+
+  const handlePrevJuice = () => {
+    setCurrentJuiceIndex(
+      (prevIndex) => (prevIndex - 1 + juiceData.length) % juiceData.length
+    );
+  };
+
+  const currentJuice = juiceData[currentJuiceIndex];
+
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-orange-300 to-orange-500 text-white font-sans overflow-hidden">
+    <div
+      className={`relative min-h-screen text-white font-sans overflow-hidden ${currentJuice.bgColor}`}
+    >
       {/* Nav */}
       <nav className="flex justify-between items-center px-8 py-6">
         <h1 className="text-white text-2xl font-bold">Juicy</h1>
@@ -30,11 +85,9 @@ export default function Juicy() {
       <div className="flex flex-col lg:flex-row items-center justify-between px-8 md:px-16 py-10 relative">
         {/* Left Text + Buttons */}
         <div className="z-10 w-full lg:w-1/2 ">
-          <h2 className="text-4xl font-bold">Orange Crush</h2>
+          <h2 className="text-4xl font-bold">{currentJuice.name}</h2>
           <p className="max-w-md text-white/90 font-Mina font-[400]">
-            Discover a world of vibrant flavors with our premium juice
-            selection. At Fresh & Juicy, we believe in the power of nature's
-            finest ingredients to bring you delicious
+            {currentJuice.description}
           </p>
           <button className="mt-4 bg-white text-orange-600 px-6 py-2 rounded-full font-semibold hover:bg-orange-100 transition">
             See More
@@ -43,7 +96,11 @@ export default function Juicy() {
 
         {/* Product Can Image */}
         <div className="z-10 relative mt-12 lg:mt-0">
-          <img src="/can.png" alt="Juice Can" className="w-[280px] mx-auto" />
+          <img
+            src={currentJuice.image}
+            alt={currentJuice.name}
+            className="w-[280px] mx-auto"
+          />
         </div>
 
         {/* JUICY Background Text */}
@@ -53,7 +110,7 @@ export default function Juicy() {
 
         {/* Size Options */}
         <div className="absolute right-8 top-1/2 transform -translate-y-1/2 space-y-4 z-10">
-          {["500 ML", "100 ML", "125 ML"].map((size, idx) => (
+          {currentJuice.sizes.map((size, idx) => (
             <div
               key={idx}
               className="bg-white text-orange-600 px-4 py-1 rounded-full text-sm font-semibold shadow"
@@ -68,10 +125,16 @@ export default function Juicy() {
       <div className="absolute bottom-6 left-0 right-0 flex justify-between items-center px-8">
         {/* Slider arrows */}
         <div className="flex gap-2">
-          <button className="w-10 h-10 bg-white/30 border border-white/50 rounded-full flex items-center justify-center text-white hover:bg-white/40">
+          <button
+            className="w-10 h-10 bg-white/30 border border-white/50 rounded-full flex items-center justify-center text-white hover:bg-white/40"
+            onClick={handlePrevJuice}
+          >
             ◀
           </button>
-          <button className="w-10 h-10 bg-white/30 border border-white/50 rounded-full flex items-center justify-center text-white hover:bg-white/40">
+          <button
+            className="w-10 h-10 bg-white/30 border border-white/50 rounded-full flex items-center justify-center text-white hover:bg-white/40"
+            onClick={handleNextJuice}
+          >
             ▶
           </button>
         </div>
