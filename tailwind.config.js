@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         Mina: ["Mina", "sans-serif"], // or 'MyFont' for local
+        Outfit: ["Outfit", "sans-serif"],
       },
     },
   },
