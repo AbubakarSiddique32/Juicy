@@ -7,14 +7,20 @@ import blackberry from "../Images/blackberry.png";
 import cheeky from "../Images/cheeky.png";
 import orange from "../Images/orange.png";
 import strawberry from "../Images/strawberry.png";
+import { motion } from "framer-motion";
+import blackberryeffect from "../Images/blackberryeffect.png";
+import orangeeffect from "../Images/orangeeffect.png";
+import cheekyeffect from "../Images/limeeffect.png";
+import strawberryeffect from "../Images/strawberryeffect.png";
 
 const juiceData = [
   {
     name: "Orange Crush",
     description:
-      "Discover a world of vibrant flavors with our premium juice selection. At Fresh & Juicy, we believe in the power of nature's finest ingredients to bring you delicious.",
+      "Discover a world of vibrant flavors with our premium juice selection. At Fresh & Juicy, we believe in the power of nature's .",
     image: orange, // Replace with the correct image path for the orange juice can
     sizes: ["500 ML", "100 ML", "125 ML"],
+    effect: orangeeffect,
     bgColor: "bg-orange-500",
     textColor: "text-orange-600",
   },
@@ -24,6 +30,7 @@ const juiceData = [
       "A tangy and refreshing blend of nature's finest ingredients, designed to invigorate your taste buds and brighten your day.",
     image: cheeky, // Replace with the correct image path for the lime juice can
     sizes: ["500 ML", "100 ML", "125 ML"],
+    effect: cheekyeffect,
     bgColor: "bg-green-500",
     textColor: "text-green-600",
   },
@@ -33,6 +40,7 @@ const juiceData = [
       "Experience the bold and sweet flavor of red berries, carefully crafted with nature’s best to bring a rich, fruity experience.",
     image: strawberry, // Replace with the correct image path for the red berry juice can
     sizes: ["500 ML", "100 ML", "125 ML"],
+    effect: strawberryeffect,
     bgColor: "bg-red-500",
     textColor: "text-red-600",
   },
@@ -41,13 +49,14 @@ const juiceData = [
     description:
       "A sweet and juicy blend of premium grapes, packed with antioxidants and flavor to refresh your senses.",
     image: blackberry, // Replace with the correct image path for the purple grape juice can
+    effect: blackberryeffect,
     sizes: ["500 ML", "100 ML", "125 ML"],
     bgColor: "bg-purple-500",
     textColor: "text-purple-600",
   },
 ];
 
-export default function Juicy() {
+export default function JuicyTwo() {
   const [currentJuiceIndex, setCurrentJuiceIndex] = useState(0);
 
   const handleNextJuice = () => {
@@ -99,19 +108,31 @@ export default function Juicy() {
 
       {/* Hero */}
       <div className="flex flex-col lg:flex-row items-center justify-center md:h-[80vh] px-8 md:px-16 py-10 pb-0 relative">
-        {/* Product Can Image */}
-        <div className="z-10  mt-12  lg:h-[100vh]">
+        {/* Background Effect Image with Animation */}
+        <motion.img
+          key={currentJuice.effect}
+          src={currentJuice.effect}
+          alt="effect"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute top-[20%] left-[25%] transform -translate-x-1/2 -translate-y-1/2 w-[50%] mx-auto max-w-[80vw] z-10 pointer-events-none h-full"
+        />
+
+        {/* JUICY Text */}
+        <h1 className="absolute top-[20%] left-0 right-0 text-[20vw] font-black text-white text-center z-[5] select-none pointer-events-none">
+          JUICY
+        </h1>
+
+        {/* Can Image */}
+        <div className="z-[20] mt-12 lg:h-[100vh]">
           <img
             src={currentJuice.image}
             alt={currentJuice.name}
-            className="w-[280px] mx-auto h-full "
+            className="w-[280px] mx-auto h-full"
           />
         </div>
-
-        {/* JUICY Background Text */}
-        <h1 className="absolute top-[20%] left-0 right-0 text-[20vw]  font-black text-white text-center z-0 select-none pointer-events-none">
-          JUICY
-        </h1>
 
         {/* Size Options */}
         <div className="absolute right-8 top-1/2 transform -translate-y-1/2 space-y-4 z-10 ">
@@ -129,7 +150,14 @@ export default function Juicy() {
       {/* Bottom Controls */}
       <div className=" flex  items-end px-10 py-10">
         {/* Left Text + Buttons */}
-        <div className="z-10 w-full md:w-[30%] relative   ">
+        <motion.div
+          key={currentJuiceIndex} // Triggers re-render animation on index change
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 40 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="z-10 w-full md:w-[30%] relative"
+        >
           <h2 className="text-4xl font-bold">{currentJuice.name}</h2>
           <p className="max-w-md text-white/90 font-Mina font-[400]">
             {currentJuice.description}
@@ -137,7 +165,8 @@ export default function Juicy() {
           <button className="mt-4 bg-white inline-block text-orange-600 px-6 py-2 rounded-full font-semibold hover:bg-orange-100 transition">
             See More
           </button>
-        </div>
+        </motion.div>
+
         {/* Slider arrows */}
         <div className="flex gap-4 md:w-[40%] items-center justify-center ">
           <button

@@ -1,13 +1,15 @@
 import "./App.css";
 import Juicy from "./Components/Juicy";
-import HeroSection from "./Components/JuicySection";
+import JuicyTwo from "./Components/JuicyTwo";
+import JuicyThree from "./Components/JuiceThree";
 
 function App() {
   return (
     <>
       <div className="">
-        <Juicy />
-        {/* <HeroSection /> */}
+        {/* <Juicy /> */}
+        {/* <JuicyTwo /> */}
+        <JuicyThree />
       </div>
     </>
   );
