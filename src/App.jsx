@@ -3,6 +3,7 @@ import Juicy from "./Components/Juicy";
 import JuicyTwo from "./Components/JuicyTwo";
 import JuicyThree from "./Components/JuiceThree";
 import JuicyFour from "./Components/JuiceFour";
+import JuicyFive from "./Components/JuiceFinal";
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       <div className="">
         {/* <Juicy /> */}
         {/* <JuicyTwo /> */}
-        <JuicyThree />
-        {/* <JuicyFour /> */}
+        {/* <JuicyThree /> */}
+        <JuicyFour />
+        {/* <JuicyFive /> */}
       </div>
     </>
   );
