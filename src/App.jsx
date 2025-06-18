@@ -2,6 +2,7 @@ import "./App.css";
 import Juicy from "./Components/Juicy";
 import JuicyTwo from "./Components/JuicyTwo";
 import JuicyThree from "./Components/JuiceThree";
+import JuicyFour from "./Components/JuiceFour";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         {/* <Juicy /> */}
         {/* <JuicyTwo /> */}
         <JuicyThree />
+        {/* <JuicyFour /> */}
       </div>
     </>
   );
