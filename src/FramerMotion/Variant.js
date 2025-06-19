@@ -18,3 +18,29 @@ export const fadeIn = (direction, delay) => {
     },
   };
 };
+
+const juiceVariants = {
+  enter: (direction) => ({
+    rotateY: direction > 0 ? 180 : -180,
+    opacity: 0,
+    zIndex: 0,
+  }),
+  center: {
+    rotateY: 0,
+    opacity: 1,
+    zIndex: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+  exit: (direction) => ({
+    rotateY: direction > 0 ? -180 : 180,
+    opacity: 0,
+    zIndex: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  }),
+};

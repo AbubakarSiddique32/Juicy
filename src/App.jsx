@@ -12,8 +12,8 @@ function App() {
         {/* <Juicy /> */}
         {/* <JuicyTwo /> */}
         {/* <JuicyThree /> */}
-        <JuicyFour />
-        {/* <JuicyFive /> */}
+        {/* <JuicyFour /> */}
+        <JuicyFive />
       </div>
     </>
   );

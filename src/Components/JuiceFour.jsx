@@ -195,22 +195,25 @@ export default function JuicyTwo() {
       {/* Bottom Controls */}
       <div className="flex items-end px-10 py-10">
         {/* Left Text + Buttons */}
-        <motion.div
-          key={currentJuiceIndex}
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 40 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="z-10 w-full md:w-[30%] relative"
-        >
-          <h2 className="text-4xl font-bold">{currentJuice.name}</h2>
-          <p className="max-w-md text-white/90 font-Mona font-[400]">
-            {currentJuice.description}
-          </p>
+        <div className="z-10 w-full md:w-[30%] relative">
+          <motion.div
+            className=""
+            key={currentJuiceIndex}
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 1.5, ease: "easeIn" }}
+          >
+            <h2 className="text-4xl font-bold">{currentJuice.name}</h2>
+            <p className="max-w-md text-white/90 font-Mona font-[400]">
+              {currentJuice.description}
+            </p>
+          </motion.div>
+
           <button className="mt-4 bg-white inline-block text-orange-600 px-6 py-2 rounded-full font-semibold hover:bg-orange-100 transition">
             See More
           </button>
-        </motion.div>
+        </div>
 
         {/* Slider arrows */}
         <div className="flex gap-4 md:w-[40%] items-center justify-center">
