@@ -21,26 +21,24 @@ export const fadeIn = (direction, delay) => {
 
 const juiceVariants = {
   enter: (direction) => ({
-    rotateY: direction > 0 ? 180 : -180,
+    x: direction > 0 ? 1000 : -1000,
+    rotate: direction > 0 ? 15 : -15,
     opacity: 0,
-    zIndex: 0,
+    scale: 0.95,
+    transition: { duration: 0.4, ease: "easeInOut" },
   }),
   center: {
-    rotateY: 0,
+    x: 0,
+    rotate: 0,
     opacity: 1,
-    zIndex: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    },
+    scale: 1,
+    transition: { duration: 0.6, ease: "easeInOut" },
   },
   exit: (direction) => ({
-    rotateY: direction > 0 ? -180 : 180,
+    x: direction > 0 ? -1000 : 1000,
+    rotate: direction > 0 ? -15 : 15,
     opacity: 0,
-    zIndex: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    },
+    scale: 0.95,
+    transition: { duration: 0.4, ease: "easeInOut" },
   }),
 };

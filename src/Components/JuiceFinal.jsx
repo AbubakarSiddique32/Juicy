@@ -149,7 +149,7 @@ export default function JuicyFive() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
           className="absolute top-[20%] left-[25%] transform -translate-x-1/2 -translate-y-1/2 w-[50%] mx-auto max-w-[80vw] z-10 pointer-events-none h-full"
         />
 
@@ -159,10 +159,7 @@ export default function JuicyFive() {
         </h1>
 
         {/* Can Image with Animation */}
-        <div
-          className="z-[20] mt-12 lg:h-[100vh] relative w-[280px] h-full mx-auto"
-          style={{ perspective: "1200px" }}
-        >
+        <div className="z-[20] mt-12 lg:h-[100vh] relative w-[280px] h-full mx-auto">
           <AnimatePresence custom={direction} mode="wait">
             <motion.div
               key={currentJuiceIndex}
@@ -172,10 +169,6 @@ export default function JuicyFive() {
               animate="center"
               exit="exit"
               className="absolute w-full h-full"
-              style={{
-                transformStyle: "preserve-3d",
-                backfaceVisibility: "hidden",
-              }}
             >
               <img
                 src={currentJuice.image}
@@ -209,7 +202,7 @@ export default function JuicyFive() {
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 1.5, ease: "easeIn" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h2 className="text-4xl font-bold">{currentJuice.name}</h2>
             <p className="max-w-md text-white/90 font-Mona font-[400]">
